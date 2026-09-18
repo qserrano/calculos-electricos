@@ -18,13 +18,13 @@ export function renderIntensidad(contenedor) {
   contenedor.innerHTML = `
     <section class="calculo">
       <header class="calculo-cabecera">
-        <h2>Intensidad</h2>
-        <p>A partir de la potencia en vatios, calcula la intensidad según el tipo de instalación.</p>
+        <h2>Intensidad conocida la potencia</h2>
+        <p>A partir de la potencia en vatios, calcula la intensidad según el tipo de suministro.</p>
       </header>
 
       <form class="form-calculo" id="form-intensidad" novalidate>
         <fieldset class="campo">
-          <legend>Tipo de instalación</legend>
+          <legend>Tipo de suministro</legend>
           <div class="opciones">
             <label>
               <input type="radio" name="tipo" value="monofasica" checked />
