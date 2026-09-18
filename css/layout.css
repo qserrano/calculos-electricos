@@ -1,0 +1,71 @@
+/* Estructura de página */
+
+body {
+  font-family: var(--fuente);
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.site-header {
+  padding: var(--espacio) 1.5rem;
+  background: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.app-shell {
+  display: flex;
+  min-height: calc(100vh - 4rem);
+}
+
+.app-nav {
+  width: 16rem;
+  padding: var(--espacio);
+  background: var(--color-superficie);
+  border-right: 1px solid var(--color-borde);
+}
+
+.app-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app-nav a {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  color: var(--color-texto);
+  text-decoration: none;
+  border-radius: var(--radio);
+}
+
+.app-nav a:hover,
+.app-nav a.activo {
+  background: var(--color-acento-suave);
+  color: var(--color-acento);
+}
+
+.app-main {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 44rem;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .app-nav {
+    width: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-borde);
+  }
+}

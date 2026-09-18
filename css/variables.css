@@ -1,0 +1,16 @@
+/* Tokens de diseño */
+
+:root {
+  --color-fondo: #f4f5f7;
+  --color-superficie: #ffffff;
+  --color-texto: #1a1a1a;
+  --color-texto-suave: #5c6570;
+  --color-borde: #d8dce3;
+  --color-acento: #0f6c4d;
+  --color-acento-suave: #e7f4ee;
+  --color-error: #9b1c1c;
+  --color-error-fondo: #fdecec;
+  --espacio: 1rem;
+  --radio: 0.5rem;
+  --fuente: system-ui, sans-serif;
+}

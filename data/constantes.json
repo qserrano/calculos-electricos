@@ -1,0 +1,5 @@
+{
+  "tensionMonofasica": 230,
+  "tensionTrifasica": 400,
+  "factorPotenciaPorDefecto": 1
+}

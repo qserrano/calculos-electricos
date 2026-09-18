@@ -1,0 +1,105 @@
+/* Componentes reutilizables (formularios, resultados, avisos) */
+
+.calculo-cabecera p {
+  margin: 0 0 1.25rem;
+  color: var(--color-texto-suave);
+}
+
+.form-calculo {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.campo {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.campo legend,
+.campo > span {
+  font-weight: 600;
+}
+
+.campo-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.campo input[type="number"] {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  font: inherit;
+}
+
+.unidad {
+  min-width: 1.5rem;
+  color: var(--color-texto-suave);
+}
+
+.opciones {
+  display: flex;
+  gap: 1rem;
+}
+
+.opciones label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ayuda {
+  margin: 0;
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+}
+
+.form-calculo button {
+  justify-self: start;
+  padding: 0.6rem 1rem;
+  border: 0;
+  border-radius: var(--radio);
+  background: var(--color-acento);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.resultado {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: var(--color-acento-suave);
+  border-radius: var(--radio);
+}
+
+.resultado-error {
+  background: var(--color-error-fondo);
+  color: var(--color-error);
+}
+
+.resultado-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0.75rem 0;
+  font-size: 1.15rem;
+}
+
+.resultado-principal strong {
+  font-size: 1.6rem;
+}
+
+.formula {
+  margin: 0;
+  color: var(--color-texto-suave);
+}
