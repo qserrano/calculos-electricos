@@ -4,6 +4,7 @@ import { renderSeccionConductor } from "./vistas/seccionConductor.js";
 import { renderCaidaTension } from "./vistas/caidaTension.js";
 import { renderProtecciones } from "./vistas/protecciones.js";
 import { renderResistenciaConductor } from "./vistas/resistenciaConductor.js";
+import { renderPrevisionCargas } from "./vistas/previsionCargas.js";
 
 const titulos = {
   inicio: "Inicio",
@@ -26,6 +27,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "potencia" || ruta === "potencia-intensidad") {
     renderPotencia(contenedor);
+    return;
+  }
+
+  if (ruta === "prevision-cargas") {
+    renderPrevisionCargas(contenedor);
     return;
   }
 

@@ -91,6 +91,25 @@
   cursor: pointer;
 }
 
+.form-calculo button.secundario {
+  background: transparent;
+  color: var(--color-acento);
+  border: 1px solid var(--color-acento);
+}
+
+#lista-locales {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.local-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+
 .resultado {
   margin-top: 1.25rem;
   padding: 1.25rem;
