@@ -1,5 +1,19 @@
 /* Componentes reutilizables (formularios, resultados, avisos) */
 
+.pantalla-inicio {
+  display: grid;
+  min-height: 12rem;
+  place-items: center;
+  padding: 2rem 1rem;
+  color: var(--color-texto-suave);
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.pantalla-inicio p {
+  margin: 0;
+}
+
 .calculo-cabecera p {
   margin: 0 0 1.25rem;
   color: var(--color-texto-suave);

@@ -9,7 +9,7 @@ const aliasRuta = {
 };
 
 function rutaActual() {
-  return window.location.hash.replace("#", "") || "intensidad-potencia";
+  return window.location.hash.replace("#", "") || "inicio";
 }
 
 function marcarNavegacion(ruta) {
