@@ -1,0 +1,28 @@
+{
+  "referencia": "ITC-BT-19 e ITC-BT-24. Calibre del magnetotérmico: Ib ≤ In ≤ Iz. El poder de corte debe ser al menos la Icc prevista. Valores orientativos.",
+  "intensidadesNominales": [6, 10, 13, 16, 20, 25, 32, 40, 50, 63, 80, 100, 125],
+  "poderCorte": [4.5, 6, 10, 15, 25, 36],
+  "curvas": {
+    "iluminacion": {
+      "curva": "B",
+      "etiqueta": "Iluminación y cargas resistivas"
+    },
+    "general": {
+      "curva": "C",
+      "etiqueta": "Usos generales y tomas de corriente"
+    },
+    "motores": {
+      "curva": "D",
+      "etiqueta": "Motores y fuertes corrientes de arranque"
+    }
+  },
+  "diferencial": {
+    "sensibilidades": {
+      "personas": 30,
+      "incendio": 300
+    },
+    "intensidades": [25, 40, 63, 80, 100],
+    "tipo": "A"
+  },
+  "iccPorDefecto": 6
+}

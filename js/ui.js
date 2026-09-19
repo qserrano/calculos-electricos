@@ -2,10 +2,10 @@ import { renderIntensidad } from "./vistas/intensidad.js";
 import { renderPotencia } from "./vistas/potencia.js";
 import { renderSeccionConductor } from "./vistas/seccionConductor.js";
 import { renderCaidaTension } from "./vistas/caidaTension.js";
+import { renderProtecciones } from "./vistas/protecciones.js";
 
 const titulos = {
   inicio: "Inicio",
-  protecciones: "Protecciones",
 };
 
 export function renderVista(contenedor, ruta) {
@@ -35,6 +35,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "caida-tension") {
     renderCaidaTension(contenedor);
+    return;
+  }
+
+  if (ruta === "protecciones") {
+    renderProtecciones(contenedor);
     return;
   }
 
