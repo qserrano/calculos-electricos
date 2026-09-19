@@ -1,5 +1,10 @@
 {
   "tensionMonofasica": 230,
   "tensionTrifasica": 400,
-  "factorPotenciaPorDefecto": 1
+  "factorPotenciaPorDefecto": 1,
+  "caidaTensionIluminacion": 3,
+  "caidaTensionOtros": 5,
+  "seccionMinimaIluminacion": 1.5,
+  "seccionMinimaOtros": 2.5,
+  "seccionMinimaAluminio": 16
 }
