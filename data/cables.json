@@ -5,6 +5,20 @@
     "cobre": 56,
     "aluminio": 35
   },
+  "coeficienteTemperatura": {
+    "cobre": 0.00393,
+    "aluminio": 0.00403
+  },
+  "aislantes": {
+    "pvc": {
+      "etiqueta": "PVC (70 °C)",
+      "temperatura": 70
+    },
+    "xlpe": {
+      "etiqueta": "XLPE / EPR (90 °C)",
+      "temperatura": 90
+    }
+  },
   "intensidadMaxima": {
     "cobre": {
       "2": {

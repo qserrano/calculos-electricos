@@ -10,6 +10,8 @@
   --color-acento-suave: #e7f4ee;
   --color-error: #9b1c1c;
   --color-error-fondo: #fdecec;
+  --color-aviso: #8a5a00;
+  --color-aviso-fondo: #fff4e0;
   --espacio: 1rem;
   --radio: 0.5rem;
   --fuente: system-ui, sans-serif;
