@@ -1,9 +1,11 @@
 {
   "referencia": "ITC-BT-18. Instalaciones de puesta a tierra. Tabla 5.",
+  "separacionMinimaEnLongitudes": 2,
   "electrodos": {
     "pica": {
       "factor": 1,
       "formula": "R = ρ / L",
+      "formulaParalelo": "R = ρ / (n · L)",
       "etiqueta": "Pica vertical"
     },
     "conductor": {

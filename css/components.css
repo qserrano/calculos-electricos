@@ -36,6 +36,10 @@
   border: 0;
 }
 
+.campo[hidden] {
+  display: none;
+}
+
 .campo legend,
 .campo > span {
   font-weight: 600;

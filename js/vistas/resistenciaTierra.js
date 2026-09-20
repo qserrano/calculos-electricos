@@ -11,7 +11,7 @@ export function renderResistenciaTierra(contenedor) {
     <section class="calculo">
       <header class="calculo-cabecera">
         <h2>Resistencia de tierra</h2>
-        <p>Estima la resistencia de una pica vertical o de un conductor enterrado a partir de la resistividad del terreno y de la longitud del electrodo.</p>
+        <p>Estima la resistencia de una pica vertical (una o varias en paralelo) o de un conductor enterrado a partir de la resistividad del terreno y de la longitud del electrodo.</p>
       </header>
 
       <form class="form-calculo" id="form-tierra" novalidate>
@@ -29,6 +29,11 @@ export function renderResistenciaTierra(contenedor) {
           </div>
         </fieldset>
 
+        <label class="campo" id="campo-picas">
+          <span>Número de picas</span>
+          <input type="number" name="numeroPicas" min="1" step="1" value="1" />
+        </label>
+
         <label class="campo">
           <span>Resistividad del terreno (ρ)</span>
           <span class="campo-control">
@@ -45,7 +50,7 @@ export function renderResistenciaTierra(contenedor) {
           </span>
         </label>
 
-        <p class="ayuda">Fórmulas aproximadas de la ITC-BT-18, tabla 5. El valor real se comprueba con telurómetro. Valores medios de ρ: ${valoresMedios}.</p>
+        <p class="ayuda">Fórmulas aproximadas de la ITC-BT-18, tabla 5. Varias picas iguales en paralelo: R = R₁ / n, con una separación mínima igual al doble de su longitud. El valor real se comprueba con telurómetro. Valores medios de ρ: ${valoresMedios}.</p>
 
         <button type="submit">Calcular</button>
       </form>
@@ -56,6 +61,15 @@ export function renderResistenciaTierra(contenedor) {
 
   const form = contenedor.querySelector("#form-tierra");
   const resultado = contenedor.querySelector("#resultado-tierra");
+  const campoPicas = contenedor.querySelector("#campo-picas");
+
+  actualizarCampoPicas(form, campoPicas);
+
+  form.querySelectorAll('input[name="electrodo"]').forEach((radio) => {
+    radio.addEventListener("change", () => {
+      actualizarCampoPicas(form, campoPicas);
+    });
+  });
 
   form.addEventListener("submit", (evento) => {
     evento.preventDefault();
@@ -64,10 +78,16 @@ export function renderResistenciaTierra(contenedor) {
       electrodo: form.elements.electrodo.value,
       resistividad: form.elements.resistividad.value,
       longitud: form.elements.longitud.value,
+      numeroPicas: form.elements.numeroPicas.value,
     };
 
     mostrarResultado(resultado, calcularResistenciaTierra(datosFormulario));
   });
+}
+
+function actualizarCampoPicas(form, campoPicas) {
+  const esPica = form.elements.electrodo.value === "pica";
+  campoPicas.hidden = !esPica;
 }
 
 function mostrarResultado(contenedor, resultado) {
@@ -82,6 +102,16 @@ function mostrarResultado(contenedor, resultado) {
     return;
   }
 
+  const detallePicas = resultado.enParalelo
+    ? `
+      <li>Picas en paralelo: ${resultado.numeroPicas}</li>
+      <li>Una pica: ${formatearNumero(resultado.resistenciaUna)} Ω</li>
+      <li>Separación mínima (2L): ${formatearNumero(resultado.separacionMinima)} m</li>
+    `
+    : resultado.electrodo === "pica"
+      ? `<li>Picas: 1</li>`
+      : "";
+
   contenedor.className = "resultado";
   contenedor.innerHTML = `
     <h3>Resultado</h3>
@@ -93,6 +123,7 @@ function mostrarResultado(contenedor, resultado) {
       <li>Electrodo: ${resultado.etiquetaElectrodo}</li>
       <li>ρ = ${formatearNumero(resultado.resistividad)} Ω·m</li>
       <li>L = ${formatearNumero(resultado.longitud)} m</li>
+      ${detallePicas}
     </ul>
     <p class="formula">Fórmula: ${resultado.formula}</p>
     <p class="ayuda">${resultado.referencia}</p>

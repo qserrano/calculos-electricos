@@ -16,6 +16,11 @@ export function esEnteroNoNegativo(valor) {
   return Number.isInteger(numero) && numero >= 0;
 }
 
+export function esEnteroPositivo(valor) {
+  const numero = Number(valor);
+  return Number.isInteger(numero) && numero >= 1;
+}
+
 export function esNumeroNoNegativo(valor) {
   if (valor === "" || valor == null) {
     return true;
