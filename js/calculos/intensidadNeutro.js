@@ -4,15 +4,16 @@ import { redondear } from "../utils/math.js";
 import { esNumeroFinitoNoNegativo, esNumeroPositivo } from "../utils/validation.js";
 
 const FORMULA_NEUTRO = "In = √(I1² + I2² + I3² − I1·I2 − I1·I3 − I2·I3)";
-const FORMULA_RESISTENCIA = "R = L / (γ · s)";
-const FORMULA_CAIDA = "ΔV = IL · R + IN · R";
+const FORMULA_RESISTENCIA = "Rf = L / (γ · sf), Rn = L / (γ · sn)";
+const FORMULA_CAIDA = "ΔV = IL · Rf + IN · Rn";
 
 export function calcularIntensidadNeutro({
   intensidadL1,
   intensidadL2,
   intensidadL3,
   longitud,
-  seccion,
+  seccionFase,
+  seccionNeutro,
   material,
   aislante,
 }) {
@@ -34,8 +35,12 @@ export function calcularIntensidadNeutro({
     errores.push("La longitud debe ser un número mayor que 0.");
   }
 
-  if (!esNumeroPositivo(seccion)) {
-    errores.push("La sección debe ser un número mayor que 0.");
+  if (!esNumeroPositivo(seccionFase)) {
+    errores.push("La sección de fase debe ser un número mayor que 0.");
+  }
+
+  if (!esNumeroPositivo(seccionNeutro)) {
+    errores.push("La sección de neutro debe ser un número mayor que 0.");
   }
 
   if (material !== "cobre" && material !== "aluminio") {
@@ -59,10 +64,12 @@ export function calcularIntensidadNeutro({
   }
 
   const L = Number(longitud);
-  const s = Number(seccion);
+  const sf = Number(seccionFase);
+  const sn = Number(seccionNeutro);
   const datosAislante = cables.aislantes[aislante];
   const gamma = conductividadServicio(material, aislante);
-  const resistencia = L / (gamma * s);
+  const resistenciaFase = L / (gamma * sf);
+  const resistenciaNeutro = L / (gamma * sn);
   const intensidadNeutro = Math.sqrt(Math.max(0, I1 * I1 + I2 * I2 + I3 * I3 - I1 * I2 - I1 * I3 - I2 * I3));
   const intensidadMaxima = Math.max(I1, I2, I3);
   const fasesMaximas = [
@@ -72,8 +79,8 @@ export function calcularIntensidadNeutro({
   ]
     .filter((fase) => Math.abs(fase.intensidad - intensidadMaxima) < 1e-9)
     .map((fase) => fase.fase);
-  const caidaFase = intensidadMaxima * resistencia;
-  const caidaNeutro = intensidadNeutro * resistencia;
+  const caidaFase = intensidadMaxima * resistenciaFase;
+  const caidaNeutro = intensidadNeutro * resistenciaNeutro;
   const caidaVoltios = caidaFase + caidaNeutro;
   const tensionFase = constantes.tensionMonofasica;
   const caidaPorcentaje = (caidaVoltios / tensionFase) * 100;
@@ -85,7 +92,10 @@ export function calcularIntensidadNeutro({
     etiquetaAislante: datosAislante.etiqueta,
     temperaturaServicio: datosAislante.temperatura,
     gamma: redondear(gamma, 2),
-    resistencia: redondear(resistencia, 4),
+    seccionFase: redondear(sf, 2),
+    seccionNeutro: redondear(sn, 2),
+    resistenciaFase: redondear(resistenciaFase, 4),
+    resistenciaNeutro: redondear(resistenciaNeutro, 4),
     intensidadL1: redondear(I1, 2),
     intensidadL2: redondear(I2, 2),
     intensidadL3: redondear(I3, 2),

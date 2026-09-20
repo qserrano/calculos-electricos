@@ -13,7 +13,7 @@ export function renderIntensidadNeutro(contenedor) {
     <section class="calculo">
       <header class="calculo-cabecera">
         <h2>Intensidad de neutro</h2>
-        <p>Calcula la intensidad del conductor de neutro en un suministro trifásico 230/400 V y la caída de tensión de la fase más cargada a partir de la resistencia del cable de ida.</p>
+        <p>Calcula la intensidad del conductor de neutro en un suministro trifásico 230/400 V y la caída de tensión de la fase más cargada a partir de las resistencias de fase y de neutro.</p>
       </header>
 
       <form class="form-calculo" id="form-neutro" novalidate>
@@ -78,14 +78,22 @@ export function renderIntensidadNeutro(contenedor) {
         </label>
 
         <label class="campo">
-          <span>Sección de los conductores</span>
+          <span>Sección de fase</span>
           <span class="campo-control">
-            <select name="seccion" required></select>
+            <select name="seccionFase" required></select>
             <span class="unidad">mm²</span>
           </span>
         </label>
 
-        <p class="ayuda">El suministro es trifásico 230/400 V. La intensidad de neutro supone las tres corrientes desfasadas 120° con el mismo factor de potencia. R es la resistencia de un solo conductor (ida). La caída en la fase más cargada es ΔV = IL · R + IN · R, referida a 230 V. Fase y neutro se toman de la misma sección.</p>
+        <label class="campo">
+          <span>Sección de neutro</span>
+          <span class="campo-control">
+            <select name="seccionNeutro" required></select>
+            <span class="unidad">mm²</span>
+          </span>
+        </label>
+
+        <p class="ayuda">El suministro es trifásico 230/400 V. La intensidad de neutro supone las tres corrientes desfasadas 120° con el mismo factor de potencia. Rf y Rn son las resistencias de un solo conductor (ida). La caída en la fase más cargada es ΔV = IL · Rf + IN · Rn, referida a 230 V. El neutro puede tener una sección distinta de las fases.</p>
 
         <button type="submit">Calcular</button>
       </form>
@@ -96,13 +104,16 @@ export function renderIntensidadNeutro(contenedor) {
 
   const form = contenedor.querySelector("#form-neutro");
   const resultado = contenedor.querySelector("#resultado-neutro");
-  const campoSeccion = form.elements.seccion;
+  const campoSeccionFase = form.elements.seccionFase;
+  const campoSeccionNeutro = form.elements.seccionNeutro;
 
-  rellenarSecciones(campoSeccion, "cobre", 2.5);
+  rellenarSecciones(campoSeccionFase, "cobre", 2.5);
+  rellenarSecciones(campoSeccionNeutro, "cobre", 2.5);
 
   form.querySelectorAll('input[name="material"]').forEach((radio) => {
     radio.addEventListener("change", () => {
-      rellenarSecciones(campoSeccion, radio.value, Number(campoSeccion.value));
+      rellenarSecciones(campoSeccionFase, radio.value, Number(campoSeccionFase.value));
+      rellenarSecciones(campoSeccionNeutro, radio.value, Number(campoSeccionNeutro.value));
     });
   });
 
@@ -114,7 +125,8 @@ export function renderIntensidadNeutro(contenedor) {
       intensidadL2: form.elements.intensidadL2.value,
       intensidadL3: form.elements.intensidadL3.value,
       longitud: form.elements.longitud.value,
-      seccion: form.elements.seccion.value,
+      seccionFase: form.elements.seccionFase.value,
+      seccionNeutro: form.elements.seccionNeutro.value,
       material: form.elements.material.value,
       aislante: form.elements.aislante.value,
     };
@@ -163,14 +175,16 @@ function mostrarResultado(contenedor, resultado) {
     <ul class="resultado-detalle">
       <li>L1 = ${formatearNumero(resultado.intensidadL1)} A, L2 = ${formatearNumero(resultado.intensidadL2)} A, L3 = ${formatearNumero(resultado.intensidadL3)} A</li>
       <li>Fase más cargada: ${etiquetaFases} (${formatearNumero(resultado.intensidadMaxima)} A)</li>
-      <li>Resistencia del cable (ida): ${formatearNumero(resultado.resistencia, 4)} Ω</li>
-      <li>IL · R = ${formatearNumero(resultado.caidaFase)} V · IN · R = ${formatearNumero(resultado.caidaNeutro)} V</li>
+      <li>sf = ${formatearNumero(resultado.seccionFase)} mm², sn = ${formatearNumero(resultado.seccionNeutro)} mm²</li>
+      <li>Rf = ${formatearNumero(resultado.resistenciaFase, 4)} Ω, Rn = ${formatearNumero(resultado.resistenciaNeutro, 4)} Ω</li>
+      <li>IL · Rf = ${formatearNumero(resultado.caidaFase)} V, IN · Rn = ${formatearNumero(resultado.caidaNeutro)} V</li>
       <li>Caída absoluta: ${formatearNumero(resultado.caidaVoltios)} V sobre ${resultado.tensionFase} V</li>
       <li>Aislante: ${resultado.etiquetaAislante}</li>
       <li>Conductividad a ${resultado.temperaturaServicio} °C: γ = ${formatearNumero(resultado.gamma)} m/(Ω·mm²)</li>
     </ul>
     <p class="formula">Fórmula del neutro: ${resultado.formulaNeutro}</p>
-    <p class="formula">Fórmulas de la caída: ${resultado.formulaResistencia} · ${resultado.formulaCaida}</p>
+    <p class="formula">Fórmulas de la caída: ${resultado.formulaResistencia}</p>
+    <p class="formula">${resultado.formulaCaida}</p>
   `;
 }
 
