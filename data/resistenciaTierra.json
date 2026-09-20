@@ -1,0 +1,32 @@
+{
+  "referencia": "ITC-BT-18. Instalaciones de puesta a tierra. Tabla 5.",
+  "electrodos": {
+    "pica": {
+      "factor": 1,
+      "formula": "R = ρ / L",
+      "etiqueta": "Pica vertical"
+    },
+    "conductor": {
+      "factor": 2,
+      "formula": "R = 2ρ / L",
+      "etiqueta": "Conductor enterrado horizontalmente"
+    }
+  },
+  "resistividadesMedias": [
+    {
+      "id": "cultivable",
+      "etiqueta": "Terrenos cultivables y fértiles, terraplenes compactos y húmedos",
+      "valor": 50
+    },
+    {
+      "id": "terraplen",
+      "etiqueta": "Terraplenes poco fértiles y otros terraplenes",
+      "valor": 500
+    },
+    {
+      "id": "pedregoso",
+      "etiqueta": "Suelos pedregosos desnudos, arenas secas permeables",
+      "valor": 3000
+    }
+  ]
+}
