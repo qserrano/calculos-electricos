@@ -28,3 +28,11 @@ export function esNumeroNoNegativo(valor) {
   const numero = Number(valor);
   return Number.isFinite(numero) && numero >= 0;
 }
+
+export function esNumeroFinitoNoNegativo(valor) {
+  if (valor === "" || valor == null) {
+    return false;
+  }
+  const numero = Number(valor);
+  return Number.isFinite(numero) && numero >= 0;
+}

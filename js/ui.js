@@ -1,4 +1,5 @@
 import { renderIntensidad } from "./vistas/intensidad.js";
+import { renderIntensidadNeutro } from "./vistas/intensidadNeutro.js";
 import { renderPotencia } from "./vistas/potencia.js";
 import { renderSeccionConductor } from "./vistas/seccionConductor.js";
 import { renderCaidaTension } from "./vistas/caidaTension.js";
@@ -24,6 +25,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "intensidad" || ruta === "intensidad-potencia") {
     renderIntensidad(contenedor);
+    return;
+  }
+
+  if (ruta === "intensidad-neutro") {
+    renderIntensidadNeutro(contenedor);
     return;
   }
 
