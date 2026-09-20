@@ -139,13 +139,17 @@ function mostrarResultado(contenedor, resultado) {
       <span>Resistencia de tierra</span>
       <strong>${formatearNumero(resultado.resistencia)} Ω</strong>
     </p>
+    <p class="resultado-principal">
+      <span>Tensión de contacto (${resultado.intensidadDefectoMa} mA)</span>
+      <strong>${formatearNumero(resultado.tensionContacto)} V</strong>
+    </p>
     <ul class="resultado-detalle">
       <li>Electrodo: ${resultado.etiquetaElectrodo}</li>
       <li>ρ = ${formatearNumero(resultado.resistividad)} Ω·m</li>
       <li>${resultado.etiquetaMedida} = ${formatearNumero(resultado.medida)} m</li>
       ${detallePicas}
     </ul>
-    <p class="formula">Fórmula: ${resultado.formula}</p>
+    <p class="formula">Fórmulas: ${resultado.formula} · ${resultado.formulaContacto}</p>
     <p class="ayuda">${resultado.referencia}</p>
   `;
 }

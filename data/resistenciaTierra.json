@@ -1,5 +1,7 @@
 {
   "referencia": "ITC-BT-18. Instalaciones de puesta a tierra. Tabla 5.",
+  "intensidadDefecto": 0.03,
+  "formulaContacto": "Uc = I · R",
   "separacionMinimaEnLongitudes": 2,
   "electrodos": {
     "pica": {

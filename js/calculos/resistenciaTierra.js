@@ -41,6 +41,7 @@ export function calcularResistenciaTierra({ electrodo, resistividad, longitud, p
   const resistencia = resistenciaUna / n;
   const enParalelo = esPica && n > 1;
   const separacionMinima = datos.separacionMinimaEnLongitudes * valorMedida;
+  const tensionContacto = resistencia * datos.intensidadDefecto;
 
   return {
     ok: true,
@@ -53,9 +54,12 @@ export function calcularResistenciaTierra({ electrodo, resistividad, longitud, p
     numeroPicas: n,
     resistenciaUna: redondear(resistenciaUna, 2),
     resistencia: redondear(resistencia, 2),
+    tensionContacto: redondear(tensionContacto, 2),
+    intensidadDefectoMa: redondear(datos.intensidadDefecto * 1000, 0),
     separacionMinima: redondear(separacionMinima, 2),
     enParalelo,
     formula: enParalelo ? tipo.formulaParalelo : tipo.formula,
+    formulaContacto: datos.formulaContacto,
     referencia: datos.referencia,
   };
 }
