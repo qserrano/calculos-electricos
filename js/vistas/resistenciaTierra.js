@@ -11,7 +11,7 @@ export function renderResistenciaTierra(contenedor) {
     <section class="calculo">
       <header class="calculo-cabecera">
         <h2>Resistencia de tierra</h2>
-        <p>Estima la resistencia de una pica vertical (una o varias en paralelo) o de un conductor enterrado a partir de la resistividad del terreno y de la longitud del electrodo.</p>
+        <p>Estima la resistencia de una pica vertical, un conductor enterrado o una placa a partir de la resistividad del terreno y de las dimensiones del electrodo.</p>
       </header>
 
       <form class="form-calculo" id="form-tierra" novalidate>
@@ -25,6 +25,10 @@ export function renderResistenciaTierra(contenedor) {
             <label>
               <input type="radio" name="electrodo" value="conductor" />
               Conductor enterrado
+            </label>
+            <label>
+              <input type="radio" name="electrodo" value="placa" />
+              Placa enterrada
             </label>
           </div>
         </fieldset>
@@ -42,15 +46,23 @@ export function renderResistenciaTierra(contenedor) {
           </span>
         </label>
 
-        <label class="campo">
+        <label class="campo" id="campo-longitud">
           <span>Longitud</span>
           <span class="campo-control">
-            <input type="number" name="longitud" min="0" step="any" required />
+            <input type="number" name="longitud" min="0" step="any" />
             <span class="unidad">m</span>
           </span>
         </label>
 
-        <p class="ayuda">Fórmulas aproximadas de la ITC-BT-18, tabla 5. Varias picas iguales en paralelo: R = R₁ / n, con una separación mínima igual al doble de su longitud. El valor real se comprueba con telurómetro. Valores medios de ρ: ${valoresMedios}.</p>
+        <label class="campo" id="campo-perimetro" hidden>
+          <span>Perímetro de la placa</span>
+          <span class="campo-control">
+            <input type="number" name="perimetro" min="0" step="any" />
+            <span class="unidad">m</span>
+          </span>
+        </label>
+
+        <p class="ayuda">Fórmulas aproximadas de la ITC-BT-18, tabla 5. Varias picas iguales en paralelo: R = R₁ / n, con una separación mínima igual al doble de su longitud. En la placa, P es el perímetro. El valor real se comprueba con telurómetro. Valores medios de ρ: ${valoresMedios}.</p>
 
         <button type="submit">Calcular</button>
       </form>
@@ -62,12 +74,14 @@ export function renderResistenciaTierra(contenedor) {
   const form = contenedor.querySelector("#form-tierra");
   const resultado = contenedor.querySelector("#resultado-tierra");
   const campoPicas = contenedor.querySelector("#campo-picas");
+  const campoLongitud = contenedor.querySelector("#campo-longitud");
+  const campoPerimetro = contenedor.querySelector("#campo-perimetro");
 
-  actualizarCampoPicas(form, campoPicas);
+  actualizarCampos(form, campoPicas, campoLongitud, campoPerimetro);
 
   form.querySelectorAll('input[name="electrodo"]').forEach((radio) => {
     radio.addEventListener("change", () => {
-      actualizarCampoPicas(form, campoPicas);
+      actualizarCampos(form, campoPicas, campoLongitud, campoPerimetro);
     });
   });
 
@@ -78,6 +92,7 @@ export function renderResistenciaTierra(contenedor) {
       electrodo: form.elements.electrodo.value,
       resistividad: form.elements.resistividad.value,
       longitud: form.elements.longitud.value,
+      perimetro: form.elements.perimetro.value,
       numeroPicas: form.elements.numeroPicas.value,
     };
 
@@ -85,9 +100,14 @@ export function renderResistenciaTierra(contenedor) {
   });
 }
 
-function actualizarCampoPicas(form, campoPicas) {
-  const esPica = form.elements.electrodo.value === "pica";
+function actualizarCampos(form, campoPicas, campoLongitud, campoPerimetro) {
+  const electrodo = form.elements.electrodo.value;
+  const esPica = electrodo === "pica";
+  const esPlaca = electrodo === "placa";
+
   campoPicas.hidden = !esPica;
+  campoLongitud.hidden = esPlaca;
+  campoPerimetro.hidden = !esPlaca;
 }
 
 function mostrarResultado(contenedor, resultado) {
@@ -122,7 +142,7 @@ function mostrarResultado(contenedor, resultado) {
     <ul class="resultado-detalle">
       <li>Electrodo: ${resultado.etiquetaElectrodo}</li>
       <li>ρ = ${formatearNumero(resultado.resistividad)} Ω·m</li>
-      <li>L = ${formatearNumero(resultado.longitud)} m</li>
+      <li>${resultado.etiquetaMedida} = ${formatearNumero(resultado.medida)} m</li>
       ${detallePicas}
     </ul>
     <p class="formula">Fórmula: ${resultado.formula}</p>

@@ -12,6 +12,12 @@
       "factor": 2,
       "formula": "R = 2ρ / L",
       "etiqueta": "Conductor enterrado horizontalmente"
+    },
+    "placa": {
+      "factor": 0.8,
+      "formula": "R = 0,8ρ / P",
+      "etiqueta": "Placa enterrada",
+      "usaPerimetro": true
     }
   },
   "resistividadesMedias": [
