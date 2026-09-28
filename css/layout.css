@@ -26,10 +26,59 @@ h3 {
 }
 
 .app-nav {
-  width: 16rem;
+  width: 17rem;
   padding: var(--espacio);
   background: var(--color-superficie);
   border-right: 1px solid var(--color-borde);
+}
+
+.nav-grupo + .nav-grupo {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+.nav-grupo summary {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.35rem;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-texto-suave);
+  cursor: pointer;
+  list-style: none;
+}
+
+.nav-grupo summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-grupo summary::before {
+  content: "";
+  width: 0.35rem;
+  height: 0.35rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.nav-grupo[open] summary::before {
+  transform: rotate(45deg);
+}
+
+.nav-grupo:not([open]) summary {
+  margin-bottom: 0;
+}
+
+.nav-vacio {
+  margin: 0;
+  padding: 0.35rem 0.75rem 0.15rem;
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
 }
 
 .app-nav ul {
@@ -40,7 +89,7 @@ h3 {
 
 .app-nav a {
   display: block;
-  padding: 0.6rem 0.75rem;
+  padding: 0.45rem 0.75rem;
   color: var(--color-texto);
   text-decoration: none;
   border-radius: var(--radio);
@@ -56,6 +105,16 @@ h3 {
   flex: 1;
   padding: 1.5rem;
   max-width: 44rem;
+}
+
+@media (min-width: 721px) {
+  .app-nav {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
 }
 
 @media (max-width: 720px) {
