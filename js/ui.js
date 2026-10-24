@@ -4,6 +4,7 @@ import { renderPotencia } from "./vistas/potencia.js";
 import { renderSeccionConductor } from "./vistas/seccionConductor.js";
 import { renderCaidaTension } from "./vistas/caidaTension.js";
 import { renderErrorParApriete } from "./vistas/errorParApriete.js";
+import { renderComprobacionFlecha } from "./vistas/comprobacionFlecha.js";
 import { renderProtecciones } from "./vistas/protecciones.js";
 import { renderResistenciaConductor } from "./vistas/resistenciaConductor.js";
 import { renderVariacionResistenciaTemperatura } from "./vistas/variacionResistenciaTemperatura.js";
@@ -77,6 +78,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "error-par-apriete") {
     renderErrorParApriete(contenedor);
+    return;
+  }
+
+  if (ruta === "comprobacion-flecha") {
+    renderComprobacionFlecha(contenedor);
     return;
   }
 
