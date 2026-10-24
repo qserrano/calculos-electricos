@@ -3,7 +3,7 @@ import constantes from "../../data/constantes.json" with { type: "json" };
 import { redondear } from "../utils/math.js";
 import { esNumeroFinitoNoNegativo, esNumeroPositivo } from "../utils/validation.js";
 
-const FORMULA_NEUTRO = "In = √(I1² + I2² + I3² − I1·I2 − I1·I3 − I2·I3)";
+export const FORMULA_NEUTRO = "In = √(I1² + I2² + I3² − I1·I2 − I1·I3 − I2·I3)";
 const FORMULA_RESISTENCIA = "Rf = L / (γ · sf), Rn = L / (γ · sn)";
 const FORMULA_CAIDA = "ΔV = IL · Rf + IN · Rn";
 
@@ -70,7 +70,7 @@ export function calcularIntensidadNeutro({
   const gamma = conductividadServicio(material, aislante);
   const resistenciaFase = L / (gamma * sf);
   const resistenciaNeutro = L / (gamma * sn);
-  const intensidadNeutro = Math.sqrt(Math.max(0, I1 * I1 + I2 * I2 + I3 * I3 - I1 * I2 - I1 * I3 - I2 * I3));
+  const intensidadNeutro = corrienteNeutroDeFases(I1, I2, I3);
   const intensidadMaxima = Math.max(I1, I2, I3);
   const fasesMaximas = [
     { fase: "L1", intensidad: I1 },
@@ -111,6 +111,10 @@ export function calcularIntensidadNeutro({
     formulaResistencia: FORMULA_RESISTENCIA,
     formulaCaida: FORMULA_CAIDA,
   };
+}
+
+export function corrienteNeutroDeFases(I1, I2, I3) {
+  return Math.sqrt(Math.max(0, I1 * I1 + I2 * I2 + I3 * I3 - I1 * I2 - I1 * I3 - I2 * I3));
 }
 
 function conductividadServicio(material, aislante) {
