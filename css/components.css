@@ -114,6 +114,25 @@
   align-items: end;
 }
 
+.lista-tramos {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.tramo-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+@media (max-width: 720px) {
+  .tramo-item {
+    grid-template-columns: 1fr;
+  }
+}
+
 .resultado {
   margin-top: 1.25rem;
   padding: 1.25rem;

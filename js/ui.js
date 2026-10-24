@@ -8,6 +8,7 @@ import { renderComprobacionFlecha } from "./vistas/comprobacionFlecha.js";
 import { renderTensionMecanicaSeccion } from "./vistas/tensionMecanicaSeccion.js";
 import { renderRigidezDielectrica } from "./vistas/rigidezDielectrica.js";
 import { renderCorrienteNeutro } from "./vistas/corrienteNeutro.js";
+import { renderCaidaTensionTramos } from "./vistas/caidaTensionTramos.js";
 import { renderProtecciones } from "./vistas/protecciones.js";
 import { renderResistenciaConductor } from "./vistas/resistenciaConductor.js";
 import { renderVariacionResistenciaTemperatura } from "./vistas/variacionResistenciaTemperatura.js";
@@ -101,6 +102,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "corriente-neutro") {
     renderCorrienteNeutro(contenedor);
+    return;
+  }
+
+  if (ruta === "caida-tension-tramos") {
+    renderCaidaTensionTramos(contenedor);
     return;
   }
 
