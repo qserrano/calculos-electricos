@@ -5,6 +5,7 @@ import { renderSeccionConductor } from "./vistas/seccionConductor.js";
 import { renderCaidaTension } from "./vistas/caidaTension.js";
 import { renderProtecciones } from "./vistas/protecciones.js";
 import { renderResistenciaConductor } from "./vistas/resistenciaConductor.js";
+import { renderVariacionResistenciaTemperatura } from "./vistas/variacionResistenciaTemperatura.js";
 import { renderResistenciaTierra } from "./vistas/resistenciaTierra.js";
 import { renderPrevisionCargas } from "./vistas/previsionCargas.js";
 import { renderPotenciaActivaReactivaAparente } from "./vistas/potenciaActivaReactivaAparente.js";
@@ -55,6 +56,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "resistencia-conductor") {
     renderResistenciaConductor(contenedor);
+    return;
+  }
+
+  if (ruta === "variacion-resistencia-temperatura") {
+    renderVariacionResistenciaTemperatura(contenedor);
     return;
   }
 

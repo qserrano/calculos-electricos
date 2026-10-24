@@ -3,6 +3,13 @@ export function esNumeroPositivo(valor) {
   return Number.isFinite(numero) && numero > 0;
 }
 
+export function esNumeroFinito(valor) {
+  if (valor === "" || valor == null) {
+    return false;
+  }
+  return Number.isFinite(Number(valor));
+}
+
 export function esFactorPotencia(valor) {
   const numero = Number(valor);
   return Number.isFinite(numero) && numero > 0 && numero <= 1;
