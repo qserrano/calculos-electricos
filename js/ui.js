@@ -6,6 +6,7 @@ import { renderCaidaTension } from "./vistas/caidaTension.js";
 import { renderErrorParApriete } from "./vistas/errorParApriete.js";
 import { renderComprobacionFlecha } from "./vistas/comprobacionFlecha.js";
 import { renderTensionMecanicaSeccion } from "./vistas/tensionMecanicaSeccion.js";
+import { renderRigidezDielectrica } from "./vistas/rigidezDielectrica.js";
 import { renderProtecciones } from "./vistas/protecciones.js";
 import { renderResistenciaConductor } from "./vistas/resistenciaConductor.js";
 import { renderVariacionResistenciaTemperatura } from "./vistas/variacionResistenciaTemperatura.js";
@@ -89,6 +90,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "tension-mecanica-seccion") {
     renderTensionMecanicaSeccion(contenedor);
+    return;
+  }
+
+  if (ruta === "rigidez-dielectrica") {
+    renderRigidezDielectrica(contenedor);
     return;
   }
 
