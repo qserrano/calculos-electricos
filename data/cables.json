@@ -10,6 +10,9 @@
     "cobre": 0.00393,
     "aluminio": 0.00403
   },
+  "tensionMecanicaMaxima": {
+    "cobre": 50
+  },
   "aislantes": {
     "pvc": {
       "etiqueta": "PVC (70 °C)",
