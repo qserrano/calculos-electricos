@@ -3,7 +3,12 @@
 body {
   font-family: var(--fuente);
   color: var(--color-texto);
-  background: var(--color-fondo);
+  background-color: var(--color-fondo);
+  background-image: url("../assets/fondo-instalaciones.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
   line-height: 1.5;
 }
 
@@ -105,6 +110,7 @@ h3 {
   flex: 1;
   padding: 1.5rem;
   max-width: 44rem;
+  background: rgb(244 245 247 / 28%);
 }
 
 @media (min-width: 721px) {
