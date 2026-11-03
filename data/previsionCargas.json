@@ -4,5 +4,9 @@
   "potenciaElevada": 9200,
   "densidadLocales": 100,
   "minimoLocal": 3450,
+  "densidadGarajeNatural": 10,
+  "densidadGarajeForzada": 20,
+  "minimoGaraje": 3450,
+  "factorReceptorMayor": 1.25,
   "simultaneidad": [1, 2, 3, 3.8, 4.6, 5.4, 6.2, 7, 7.8, 8.5, 9.2, 9.9, 10.6, 11.3, 11.9, 12.5, 13.1, 13.7, 14.3, 14.8, 15.3]
 }

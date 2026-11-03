@@ -1,0 +1,13 @@
+{
+  "referencia": "ITC-BT-52. Instalaciones con fines especiales. Infraestructura para la recarga de vehículos eléctricos.",
+  "tabla": "Tabla 2. Potencias instaladas normalizadas de los circuitos de recarga colectivos destinados a alimentar estaciones de recarga.",
+  "tensionNominal": "230/400 V",
+  "esquemas": ["1a", "1b", "4b"],
+  "potenciaUnitariaEstacion": 3680,
+  "circuitos": [
+    { "corriente": 16, "potencia": 11085, "estacionesMaximas": 3 },
+    { "corriente": 32, "potencia": 22170, "estacionesMaximas": 6 },
+    { "corriente": 50, "potencia": 34641, "estacionesMaximas": 9 },
+    { "corriente": 63, "potencia": 43647, "estacionesMaximas": 12 }
+  ]
+}

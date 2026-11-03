@@ -146,6 +146,32 @@
   align-items: end;
 }
 
+#lista-receptores {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.receptor-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+#lista-garajes {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.garaje-item {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+
 .lista-tramos {
   display: grid;
   gap: 0.75rem;
@@ -174,7 +200,9 @@
 
 @media (max-width: 720px) {
   .tramo-item,
-  .conductor-item {
+  .conductor-item,
+  .receptor-item,
+  .garaje-item {
     grid-template-columns: 1fr;
   }
 }
