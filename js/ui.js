@@ -6,6 +6,7 @@ import { renderSeccionCobreMonofasica } from "./vistas/seccionCobreMonofasica.js
 import { renderEsfuerzoTraccion } from "./vistas/esfuerzoTraccion.js";
 import { renderDiametroTubo } from "./vistas/diametroTubo.js";
 import { renderRadioCurvatura } from "./vistas/radioCurvatura.js";
+import { renderResistenciaTierraInterior } from "./vistas/resistenciaTierraInterior.js";
 import { renderCaidaTension } from "./vistas/caidaTension.js";
 import { renderErrorParApriete } from "./vistas/errorParApriete.js";
 import { renderComprobacionFlecha } from "./vistas/comprobacionFlecha.js";
@@ -81,6 +82,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "radio-curvatura") {
     renderRadioCurvatura(contenedor);
+    return;
+  }
+
+  if (ruta === "resistencia-tierra-interior") {
+    renderResistenciaTierraInterior(contenedor);
     return;
   }
 

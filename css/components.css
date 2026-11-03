@@ -84,6 +84,38 @@
   font-size: 0.9rem;
 }
 
+.ayuda p {
+  margin: 0;
+}
+
+.tabla-ayuda {
+  width: 100%;
+  margin-top: 0.75rem;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tabla-ayuda caption {
+  margin-bottom: 0.35rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.tabla-ayuda th,
+.tabla-ayuda td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--color-borde);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabla-ayuda th:last-child,
+.tabla-ayuda td:last-child {
+  width: 6rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
 .form-calculo button {
   justify-self: start;
   padding: 0.6rem 1rem;
