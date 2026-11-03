@@ -21,6 +21,7 @@ import { renderResistenciaTierra } from "./vistas/resistenciaTierra.js";
 import { renderPrevisionCargas } from "./vistas/previsionCargas.js";
 import { renderPotenciaActivaReactivaAparente } from "./vistas/potenciaActivaReactivaAparente.js";
 import { renderCortocircuitoCgmp } from "./vistas/cortocircuitoCgmp.js";
+import { renderSeccionConductorProteccion } from "./vistas/seccionConductorProteccion.js";
 
 const titulos = {
   inicio: "Inicio",
@@ -148,6 +149,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "cortocircuito-cgmp") {
     renderCortocircuitoCgmp(contenedor);
+    return;
+  }
+
+  if (ruta === "seccion-conductor-proteccion") {
+    renderSeccionConductorProteccion(contenedor);
     return;
   }
 
