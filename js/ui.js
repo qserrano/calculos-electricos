@@ -4,6 +4,7 @@ import { renderPotencia } from "./vistas/potencia.js";
 import { renderSeccionConductor } from "./vistas/seccionConductor.js";
 import { renderSeccionCobreMonofasica } from "./vistas/seccionCobreMonofasica.js";
 import { renderEsfuerzoTraccion } from "./vistas/esfuerzoTraccion.js";
+import { renderDiametroTubo } from "./vistas/diametroTubo.js";
 import { renderRadioCurvatura } from "./vistas/radioCurvatura.js";
 import { renderCaidaTension } from "./vistas/caidaTension.js";
 import { renderErrorParApriete } from "./vistas/errorParApriete.js";
@@ -70,6 +71,11 @@ export function renderVista(contenedor, ruta) {
 
   if (ruta === "esfuerzo-traccion") {
     renderEsfuerzoTraccion(contenedor);
+    return;
+  }
+
+  if (ruta === "diametro-tubo") {
+    renderDiametroTubo(contenedor);
     return;
   }
 

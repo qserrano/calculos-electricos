@@ -127,8 +127,22 @@
   align-items: end;
 }
 
+.lista-conductores {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.conductor-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+}
+
 @media (max-width: 720px) {
-  .tramo-item {
+  .tramo-item,
+  .conductor-item {
     grid-template-columns: 1fr;
   }
 }

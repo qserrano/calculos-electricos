@@ -1,0 +1,52 @@
+{
+  "conductores": [
+    { "seccion": 1.5, "diametro": 5.6 },
+    { "seccion": 2.5, "diametro": 6 },
+    { "seccion": 4, "diametro": 6.5 },
+    { "seccion": 6, "diametro": 7.4 },
+    { "seccion": 10, "diametro": 8.3 },
+    { "seccion": 16, "diametro": 9.3 },
+    { "seccion": 25, "diametro": 11 },
+    { "seccion": 35, "diametro": 12.2 },
+    { "seccion": 50, "diametro": 14 },
+    { "seccion": 70, "diametro": 15.9 },
+    { "seccion": 95, "diametro": 17.8 },
+    { "seccion": 120, "diametro": 19.4 },
+    { "seccion": 150, "diametro": 21.8 },
+    { "seccion": 185, "diametro": 24.3 },
+    { "seccion": 240, "diametro": 27.3 },
+    { "seccion": 300, "diametro": 29.7 },
+    { "seccion": 400, "diametro": 34 },
+    { "seccion": 500, "diametro": 37.3 }
+  ],
+  "instalaciones": {
+    "superficie": { "etiqueta": "Superficie", "factor": 2.5, "tubo": "rigido" },
+    "empotrada": { "etiqueta": "Empotrada", "factor": 3, "tubo": "corrugado" },
+    "aire": { "etiqueta": "Al aire", "factor": 4, "tubo": "corrugado" }
+  },
+  "tubos": {
+    "rigido": {
+      "etiqueta": "Tubo rígido",
+      "diametros": [
+        { "comercial": 16, "interior": 10.5 },
+        { "comercial": 20, "interior": 14 },
+        { "comercial": 25, "interior": 18 },
+        { "comercial": 32, "interior": 24.5 },
+        { "comercial": 40, "interior": 31.5 },
+        { "comercial": 50, "interior": 40.5 },
+        { "comercial": 63, "interior": 52 }
+      ]
+    },
+    "corrugado": {
+      "etiqueta": "Tubo corrugado",
+      "diametros": [
+        { "comercial": 16, "interior": 10.7 },
+        { "comercial": 20, "interior": 13.4 },
+        { "comercial": 25, "interior": 18.5 },
+        { "comercial": 32, "interior": 24.3 },
+        { "comercial": 40, "interior": 31.2 },
+        { "comercial": 50, "interior": 39.6 }
+      ]
+    }
+  }
+}
