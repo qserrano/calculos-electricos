@@ -1,5 +1,5 @@
+import tubos from "../../data/tubos.json" with { type: "json" };
 import { redondear } from "../utils/math.js";
-import { esNumeroPositivo } from "../utils/validation.js";
 
 const FORMULA = "R = k · D";
 
@@ -21,32 +21,38 @@ export const TIPOS_CURVATURA = [
   },
 ];
 
-export function calcularRadioCurvatura({ tipo, diametro }) {
+export function calcularRadioCurvatura({ tipo, seccion }) {
   const errores = [];
   const datosTipo = TIPOS_CURVATURA.find((opcion) => opcion.id === tipo);
+  const conductor = conductorDe(seccion);
 
   if (!datosTipo) {
     errores.push("Indica el tipo de cable.");
   }
 
-  if (!esNumeroPositivo(diametro)) {
-    errores.push("El diámetro exterior debe ser un número mayor que 0.");
+  if (!conductor) {
+    errores.push("La sección debe ser una de la tabla de diámetros exteriores.");
   }
 
   if (errores.length > 0) {
     return { ok: false, errores };
   }
 
-  const D = Number(diametro);
-  const radio = datosTipo.k * D;
+  const radio = datosTipo.k * conductor.diametro;
 
   return {
     ok: true,
     tipo: datosTipo.id,
     etiquetaTipo: datosTipo.etiqueta,
     k: datosTipo.k,
-    diametro: redondear(D, 2),
+    seccion: conductor.seccion,
+    diametro: redondear(conductor.diametro, 2),
     radio: redondear(radio, 2),
     formula: FORMULA,
   };
+}
+
+function conductorDe(seccion) {
+  const valor = Number(seccion);
+  return tubos.conductores.find((conductor) => Math.abs(conductor.seccion - valor) < 1e-9);
 }
