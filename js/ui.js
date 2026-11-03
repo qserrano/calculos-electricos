@@ -29,11 +29,7 @@ const titulos = {
 
 export function renderVista(contenedor, ruta) {
   if (ruta === "inicio") {
-    contenedor.innerHTML = `
-      <section class="pantalla-inicio">
-        <p>Seleccione el cálculo requerido</p>
-      </section>
-    `;
+    contenedor.replaceChildren();
     return;
   }
 
